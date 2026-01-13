@@ -12,7 +12,8 @@ function dashboard() {
             { id: 7, title: 'Informes de Servicio' },
             { id: 8, title: 'Mejora Continua' },
             { id: 9, title: 'Adecuación Broilers' },
-            { id: 10, title: 'Cierre' }
+            { id: 10, title: 'Calidad de Agua' },
+            { id: 11, title: 'Cierre' }
         ],
         indicators: [],
         indColors: ['#DA291C', '#FFC72C', '#22c55e', '#3b82f6', '#a855f7', '#f97316'],
