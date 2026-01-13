@@ -15,7 +15,8 @@ function dashboard() {
             { id: 10, title: 'Calidad de Agua' },
             { id: 11, title: 'Relevamiento' },
             { id: 12, title: 'Equipos' },
-            { id: 13, title: 'Cierre' }
+            { id: 13, title: 'Fichadas y Tiempos' },
+            { id: 14, title: 'Cierre' }
         ],
         indicators: [],
         indColors: ['#DA291C', '#FFC72C', '#22c55e', '#3b82f6', '#a855f7', '#f97316'],
