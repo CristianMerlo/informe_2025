@@ -41,6 +41,33 @@ const PERFORMANCE_DATA = {
         { nombre: 'San Martín', tickets: 6 }
     ],
 
+    // Comparativa Mensual (Septiembre - Diciembre)
+    comparativaMensual: {
+        meses: ['Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+        recibidos: [167, 249, 298, 364],
+        resueltos: [162, 246, 298, 358],
+        totalAcumulado: 1078,
+        eficienciaPromedio: 98.5,
+        observaciones: [
+            {
+                titulo: 'Crecimiento de Demanda',
+                texto: 'Aumento sostenido del 118% en la recepción de tickets desde Septiembre a Diciembre.'
+            },
+            {
+                titulo: 'Pico de Eficiencia',
+                texto: 'Máximo rendimiento alcanzado en Noviembre con el 100% de los casos resueltos.'
+            },
+            {
+                titulo: 'Volumen Nominal',
+                texto: 'Diciembre registró la mayor capacidad operativa con 358 tickets finalizados.'
+            },
+            {
+                titulo: 'Control de Backlog',
+                texto: 'Los tickets pendientes se mantuvieron en niveles mínimos (promedio < 4 mensuales).'
+            }
+        ]
+    },
+
     // Fallas Principales
     fallas: [
         { codigo: 'ER 021/022', descripcion: 'Anomalía en movimiento de las muelas', count: 113 },

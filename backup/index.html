@@ -184,8 +184,121 @@
             </div>
         </section>
 
-        <!-- SLIDE 4: Análisis por Categoría -->
+        <!-- SLIDE 4: Comparativa de Gestión Mensual -->
         <section id="slide-4" class="slide flex flex-col justify-center p-8 md:p-20 bg-black">
+            <div class="max-w-7xl mx-auto w-full">
+                <div class="flex items-center gap-4 mb-8">
+                    <span class="badge-yellow">COMPARATIVA SEPT-DIC</span>
+                    <div class="h-[2px] bg-white/10 flex-1"></div>
+                </div>
+
+                <h2 class="section-title mb-8 text-center">Tickets Recibidos vs. Resueltos</h2>
+
+                <!-- KPI Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    <div class="glass-panel p-6 text-center">
+                        <div class="text-brand-yellow text-5xl font-black mb-2">1,078</div>
+                        <div class="text-white/60 text-xs uppercase tracking-widest">Total Acumulado</div>
+                    </div>
+                    <div class="glass-panel p-6 text-center">
+                        <div class="text-brand-yellow text-5xl font-black mb-2">98.5%</div>
+                        <div class="text-white/60 text-xs uppercase tracking-widest">Eficiencia Promedio</div>
+                    </div>
+                </div>
+
+                <!-- Chart and Observations Grid -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+                    <!-- Main Chart - 2 columns -->
+                    <div class="lg:col-span-2 glass-panel p-8 h-[450px]">
+                        <h3 class="text-white font-bold mb-4 uppercase text-sm">Evolución Mensual</h3>
+                        <canvas id="chartComparativaMensual"></canvas>
+                    </div>
+
+                    <!-- Observations Panel - 1 column -->
+                    <div class="glass-panel p-6">
+                        <h3 class="text-white font-bold mb-6 uppercase text-sm">Detalle de Observaciones</h3>
+                        <div class="space-y-4">
+                            <div class="border-l-4 border-brand-red pl-4">
+                                <h4 class="text-brand-yellow text-xs font-bold uppercase mb-1">Crecimiento de Demanda
+                                </h4>
+                                <p class="text-white/70 text-xs leading-relaxed">Aumento sostenido del 118% en la
+                                    recepción de tickets desde Septiembre a Diciembre.</p>
+                            </div>
+                            <div class="border-l-4 border-green-400 pl-4">
+                                <h4 class="text-brand-yellow text-xs font-bold uppercase mb-1">Pico de Eficiencia</h4>
+                                <p class="text-white/70 text-xs leading-relaxed">Máximo rendimiento alcanzado en
+                                    Noviembre con el 100% de los casos resueltos.</p>
+                            </div>
+                            <div class="border-l-4 border-brand-yellow pl-4">
+                                <h4 class="text-brand-yellow text-xs font-bold uppercase mb-1">Volumen Nominal</h4>
+                                <p class="text-white/70 text-xs leading-relaxed">Diciembre registró la mayor capacidad
+                                    operativa con 358 tickets finalizados.</p>
+                            </div>
+                            <div class="border-l-4 border-blue-400 pl-4">
+                                <h4 class="text-brand-yellow text-xs font-bold uppercase mb-1">Control de Backlog</h4>
+                                <p class="text-white/70 text-xs leading-relaxed">Los tickets pendientes se mantuvieron
+                                    en niveles mínimos (promedio &lt; 4 mensuales).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reference Table -->
+                <div class="glass-panel p-6">
+                    <h3 class="text-white font-bold mb-4 uppercase text-sm">Tabla de Referencia</h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-sm">
+                            <thead>
+                                <tr class="border-b border-white/10">
+                                    <th class="pb-3 text-white/60 font-bold uppercase text-xs">Mes</th>
+                                    <th class="pb-3 text-white/60 font-bold uppercase text-xs text-center">Recibidos
+                                    </th>
+                                    <th class="pb-3 text-white/60 font-bold uppercase text-xs text-center">Resueltos
+                                    </th>
+                                    <th class="pb-3 text-white/60 font-bold uppercase text-xs text-center">Pendientes
+                                    </th>
+                                    <th class="pb-3 text-white/60 font-bold uppercase text-xs text-center">Eficiencia
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-white">
+                                <tr class="border-b border-white/5 hover:bg-white/5 transition-colors">
+                                    <td class="py-3 font-medium">Septiembre</td>
+                                    <td class="py-3 text-center text-brand-red font-bold">167</td>
+                                    <td class="py-3 text-center text-green-400 font-bold">162</td>
+                                    <td class="py-3 text-center">5</td>
+                                    <td class="py-3 text-center">97.0%</td>
+                                </tr>
+                                <tr class="border-b border-white/5 hover:bg-white/5 transition-colors">
+                                    <td class="py-3 font-medium">Octubre</td>
+                                    <td class="py-3 text-center text-brand-red font-bold">249</td>
+                                    <td class="py-3 text-center text-green-400 font-bold">246</td>
+                                    <td class="py-3 text-center">3</td>
+                                    <td class="py-3 text-center">98.8%</td>
+                                </tr>
+                                <tr class="border-b border-white/5 hover:bg-white/5 transition-colors">
+                                    <td class="py-3 font-medium">Noviembre</td>
+                                    <td class="py-3 text-center text-brand-red font-bold">298</td>
+                                    <td class="py-3 text-center text-green-400 font-bold">298</td>
+                                    <td class="py-3 text-center">0</td>
+                                    <td class="py-3 text-center text-green-400 font-bold">100.0%</td>
+                                </tr>
+                                <tr class="hover:bg-white/5 transition-colors">
+                                    <td class="py-3 font-medium">Diciembre</td>
+                                    <td class="py-3 text-center text-brand-red font-bold">364</td>
+                                    <td class="py-3 text-center text-green-400 font-bold">358</td>
+                                    <td class="py-3 text-center">6</td>
+                                    <td class="py-3 text-center">98.4%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 5: Análisis por Categoría -->
+        <section id="slide-5" class="slide flex flex-col justify-center p-8 md:p-20 bg-dark-surface">
             <div class="max-w-7xl mx-auto w-full">
                 <div class="flex items-center gap-4 mb-12">
                     <span class="badge-yellow">ANÁLISIS POR CATEGORÍA</span>
@@ -212,8 +325,8 @@
             </div>
         </section>
 
-        <!-- SLIDE 5: Fallas y Locales -->
-        <section id="slide-5" class="slide flex flex-col justify-center p-8 md:p-20 bg-dark-surface">
+        <!-- SLIDE 6: Fallas y Locales -->
+        <section id="slide-6" class="slide flex flex-col justify-center p-8 md:p-20 bg-dark-surface">
             <div class="max-w-7xl mx-auto w-full">
                 <div class="flex items-center gap-4 mb-12">
                     <span class="badge-red">ANÁLISIS DETALLADO</span>
@@ -239,7 +352,7 @@
         </section>
 
         <!-- Footer / Contact -->
-        <section id="slide-6" class="slide flex items-center justify-center bg-black">
+        <section id="slide-7" class="slide flex items-center justify-center bg-black">
             <div class="text-center">
                 <img src="./templates/logo.png" class="h-24 w-auto mx-auto mb-12 grayscale opacity-50" alt="Logo">
                 <h2 class="text-5xl font-black text-white mb-6 uppercase tracking-widest">Fin del Reporte</h2>

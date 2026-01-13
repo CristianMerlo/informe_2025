@@ -6,9 +6,10 @@ function dashboard() {
             { id: 1, title: 'Seguimiento Mensual' },
             { id: 2, title: 'Alcance del Equipo' },
             { id: 3, title: 'Resumen Ejecutivo' },
-            { id: 4, title: 'Análisis por Categoría' },
-            { id: 5, title: 'Fallas y Locales' },
-            { id: 6, title: 'Cierre' }
+            { id: 4, title: 'Comparativa Mensual' },
+            { id: 5, title: 'Análisis por Categoría' },
+            { id: 6, title: 'Fallas y Locales' },
+            { id: 7, title: 'Cierre' }
         ],
         indicators: [],
         indColors: ['#DA291C', '#FFC72C', '#22c55e', '#3b82f6', '#a855f7', '#f97316'],
@@ -247,7 +248,76 @@ function dashboard() {
                 });
             }
 
-            // 2. Categories Donut Chart
+            // 2. Monthly Comparison Chart (Grouped Bars)
+            const ctxComparativa = document.getElementById('chartComparativaMensual');
+            if (ctxComparativa) {
+                new Chart(ctxComparativa.getContext('2d'), {
+                    type: 'bar',
+                    data: {
+                        labels: perfData.comparativaMensual.meses,
+                        datasets: [
+                            {
+                                label: 'Recibidos',
+                                data: perfData.comparativaMensual.recibidos,
+                                backgroundColor: '#DA291C',
+                                borderRadius: 6
+                            },
+                            {
+                                label: 'Resueltos',
+                                data: perfData.comparativaMensual.resueltos,
+                                backgroundColor: '#10B981',
+                                borderRadius: 6
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: true,
+                                position: 'top',
+                                labels: { color: '#fff', font: { weight: 'bold', size: 11 } }
+                            },
+                            tooltip: {
+                                backgroundColor: 'rgba(0,0,0,0.9)',
+                                titleFont: { size: 14, weight: 'bold' },
+                                bodyFont: { size: 12 },
+                                padding: 12,
+                                callbacks: {
+                                    afterBody: function (context) {
+                                        if (context.length > 0) {
+                                            const index = context[0].dataIndex;
+                                            const recibidos = perfData.comparativaMensual.recibidos[index];
+                                            const resueltos = perfData.comparativaMensual.resueltos[index];
+                                            const pendientes = recibidos - resueltos;
+                                            const eficiencia = ((resueltos / recibidos) * 100).toFixed(1);
+                                            return [
+                                                '',
+                                                `Pendientes: ${pendientes}`,
+                                                `Eficiencia: ${eficiencia}%`
+                                            ];
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            x: {
+                                grid: { display: false },
+                                ticks: { color: '#9ca3af', font: { weight: 'bold' } }
+                            },
+                            y: {
+                                grid: { color: 'rgba(255,255,255,0.05)' },
+                                ticks: { color: '#9ca3af', font: { weight: 'bold' } },
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            }
+
+            // 3. Categories Donut Chart
             const ctxDonut = document.getElementById('chartCategoriesDonut');
             if (ctxDonut) {
                 new Chart(ctxDonut.getContext('2d'), {

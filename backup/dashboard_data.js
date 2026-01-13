@@ -238,8 +238,8 @@ const DASHBOARD_DATA = {
     "DICIEMBRE"
   ],
   "overallMetrics": {
-    "totalTickets": 166,
+    "totalTickets": 364,
     "totalHours": 452,
-    "avgSLA": 1.82
+    "avgSLA": 4.15
   }
 };
